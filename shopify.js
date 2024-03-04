@@ -1,6 +1,5 @@
-import { Actor } from 'apify';
-import { PlaywrightCrawler, Dataset } from 'crawlee'
-await Actor.init()
+import { PlaywrightCrawler } from 'crawlee'
+
 
 const crawler = new PlaywrightCrawler({
     requestHandler: async ({ page, request, enqueueLinks }) => {
@@ -41,8 +40,8 @@ const crawler = new PlaywrightCrawler({
                 currentPrice: price,
                 availableInStock: inStock,
             };
-            Dataset.pushData(results)
-            // console.log(results);
+            
+            console.log(results);
         } else if (request.label === 'CATEGORY') {
             // We are now on a category page. We can use this to paginate through and enqueue all products,
             // as well as any subsequent pages we find
@@ -78,4 +77,4 @@ const crawler = new PlaywrightCrawler({
 });
 
 await crawler.run(['https://warehouse-theme-metal.myshopify.com/collections']);
-await Actor.exit();
+// await Actor.exit();
