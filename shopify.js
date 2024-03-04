@@ -1,5 +1,4 @@
-import { PlaywrightCrawler } from 'crawlee'
-
+import { PlaywrightCrawler } from 'crawlee';
 
 const crawler = new PlaywrightCrawler({
     requestHandler: async ({ page, request, enqueueLinks }) => {
